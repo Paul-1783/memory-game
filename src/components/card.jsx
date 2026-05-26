@@ -2,7 +2,6 @@ import "./../styles/card.css"
 
 
 export function Card({imgSrc, imgName}){
-    console.log("source ", imgSrc)
 
     return(
         <>
