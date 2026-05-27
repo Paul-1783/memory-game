@@ -24,16 +24,17 @@ function App() {
         let randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex --;
 
-        [pictureData[currentIndex],pictureData[randomIndex]] = [pictureData[randomIndex], pictureData[currentIndex]]
+        [pictureData[currentIndex], pictureData[randomIndex]] = [pictureData[randomIndex], pictureData[currentIndex]]
       } 
+      
       console.log("in reaarange : ", pictureData)
-       return pictureData
+      
+      return pictureData
   }
 
   function handleGuess() {
-    // setPictureData(pictures => rearangePictures(pictures))
+    setPictureData(pictures => [...rearangePictures(pictures)])
     console.log(pictureData, "\n IN HANDLEGUESS");
-    () => setPictureData(pictureData)
   }
 
   console.log(pictureData, "\n UNTEN")
