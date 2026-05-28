@@ -5,6 +5,8 @@ import './App.css'
 import { MainArea } from './components/mainArea.jsx';
 import { Result } from './components/result.jsx';
 import { Card } from './components/card.jsx';
+import { Defeat } from './components/defeatDialog.jsx';
+import { Victory } from './components/victoryDialog.jsx';
 
 import { originalPictures } from "./assets/dataAssembled.js"
 import { rearangePictures } from "./utils/rearange.js"
@@ -50,10 +52,8 @@ function App() {
     if(countAttempts > bestResult)
       setBestResult(countAttempts)
     setCountAttempts(0);
-    console.log(correctPicks, " IN ALL TO START ", pictureData)
   }
 
-  console.log(correctPicks," BEFORE RENDER ", pictureData)
 
   return (
     <>
@@ -63,9 +63,11 @@ function App() {
         }
       </div>
       <dialog ref={dialogRef} >
-        {correctPicks.length === 11 ? "YOU WON": "YOU LOST"}
+        {correctPicks.length === 11 
+        ? < Victory /> 
+        : < Defeat bestResult={bestResult} countAttempts={countAttempts} />}
           <button onClick={toggleDialog}> Close</button>
-        </dialog>        
+      </dialog>        
     </>
   )
 }
