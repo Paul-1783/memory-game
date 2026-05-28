@@ -1,54 +1,73 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
  
 import './App.css'
 
 import { MainArea } from './components/mainArea.jsx';
 import { Result } from './components/result.jsx';
 import { Card } from './components/card.jsx';
+import { Defeat } from './components/defeatDialog.jsx';
+import { Victory } from './components/victoryDialog.jsx';
 
 import { originalPictures } from "./assets/dataAssembled.js"
-// import { rearangePictures } from "./utils/rearange.js"
+import { rearangePictures } from "./utils/rearange.js"
 
 function App() {
   const [bestResult, setBestResult] = useState(0)
   const [countAttempts, setCountAttempts] = useState(0)
-  const [correctPicks, setCorrectPicks] = useState(0)
-  const [pictureData, setPictureData] = useState(originalPictures)
+  const [correctPicks, setCorrectPicks] = useState([])
+  const [pictureData, setPictureData] = useState([...originalPictures])
+  const [dialogActive, setDialogActive] = useState(false)  
+  const dialogRef = useRef(null)
 
-  function rearangePictures(pictureData) {
-      
-      let currentIndex = pictureData.length;
- 
-      while(currentIndex != 0) {
-
-        let randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex --;
-
-        [pictureData[currentIndex], pictureData[randomIndex]] = [pictureData[randomIndex], pictureData[currentIndex]]
-      } 
-      
-      console.log("in reaarange : ", pictureData)
-      
-      return pictureData
+  function handleGuess(e) {
+    if(correctPicks.includes(e.target.dataset.index)) {
+      toggleDialog()
+    }
+    else {
+      if(correctPicks.length === 11)
+        toggleDialog()
+      else
+      {        
+        correctPicks.push(e.target.dataset.index)
+        setCountAttempts(counter => counter + 1)
+        setPictureData(pictures => [...rearangePictures(pictures)])
+      }
+    }
   }
 
-  function handleGuess() {
-    setPictureData(pictures => [...rearangePictures(pictures)])
-    console.log(pictureData, "\n IN HANDLEGUESS");
+  function toggleDialog() {
+    if(!dialogRef.current) 
+      return;
+
+    if(dialogRef.current.hasAttribute("open")) {
+      dialogRef.current.close() 
+      setAllToStart()
+    }
+    else dialogRef.current.showModal()
   }
 
-  console.log(pictureData, "\n UNTEN")
+  function setAllToStart() {
+    setCorrectPicks(() => [])
+    setPictureData([...originalPictures])
+    if(countAttempts > bestResult)
+      setBestResult(countAttempts)
+    setCountAttempts(0);
+  }
+
 
   return (
     <>
       <div className='cards-space'>
-        {pictureData.map(
-          picture => 
-        {
-          console.log("IN MAP ", picture); 
-          return < Card key={picture.index} imgSrc={picture.origin} imgName={picture.title} handleGuess={handleGuess} /> }
-        )}
-      </div>         
+        {pictureData.map(picture => 
+         < Card key={picture.index} index={picture.index} imgSrc={picture.origin} imgName={picture.title} handleGuess={handleGuess} /> )
+        }
+      </div>
+      <dialog ref={dialogRef} >
+        {correctPicks.length === 11 
+        ? < Victory /> 
+        : < Defeat bestResult={bestResult} countAttempts={countAttempts} />}
+          <button onClick={toggleDialog}> Close</button>
+      </dialog>        
     </>
   )
 }

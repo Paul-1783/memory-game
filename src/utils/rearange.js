@@ -11,6 +11,5 @@
 
         [savePictureData[currentIndex],savePictureData[randomIndex]] = [savePictureData[randomIndex], savePictureData[currentIndex]]
       } 
-      console.log("in reaarange : ", savePictureData)
       return savePictureData
   }
