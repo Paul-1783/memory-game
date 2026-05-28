@@ -11,7 +11,7 @@ button{
 .card{
     background-color: var(--primary-color);
     border: thick double var(--quaternay-color);
-    width: 15dvw;
+    width: 100%;
     height: 25dvh;
 }
 

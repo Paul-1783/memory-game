@@ -48,7 +48,7 @@ h1{
 .cards-space{
   max-width: 70%;
   display: grid;
-  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 1em;
   margin-right: 100px;
 }
@@ -65,4 +65,33 @@ h1{
   text-align: right;
   font-size: 24px;
   font-weight: 900;
+}
+
+@media (width < 1300px) {
+  .counter-panel{
+    visibility: hidden;
+  }
+
+  .cards-space{
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media (width < 1500px) {
+  .counter-panel{
+    visibility: hidden;
+  }
+}
+
+
+@media (width < 1300px) {
+  .cards-space{
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media (width < 700px) {
+  .cards-space{
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
 }
