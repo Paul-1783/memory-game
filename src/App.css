@@ -41,6 +41,32 @@ h1{
   font-size: 50px;
 }
 
+dialog{
+  background-color: var(--secondary-color);
+  border: thick double var(--quaternay-color);
+  position: relative;
+}
+
+dialog p{
+  font-size: 18px;
+}
+
+dialog button {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  color: var(--primary-color);
+  background-color: var(--fifth-color);
+  border: none;
+}
+
+dialog button:hover {
+  box-shadow: 0.2rem 0.2rem 0.5rem   var(--primary-color), -0.2rem -0.2rem 3rem  var(--primary-color);
+  color: var(--secondary-color-color)
+}
+
 .title-exposition {
   font-size: 25px;
 }
