@@ -38,17 +38,27 @@
 
 h1{
   font-weight: 900;
-  font-size: 30px;
+  font-size: 50px;
+}
+
+.title-exposition {
+  font-size: 25px;
 }
 
 .cards-space{
   max-width: 70%;
   display: grid;
   grid-template-columns: repeat(4, minmax(100px, 1fr));
-  gap: 2em;
+  gap: 1em;
+  margin-right: 100px;
 }
 
 .counter-panel{
+  background-color: #BF4E24;
+  padding: 0.4em 1em;
+  border-radius: 5px;
+  border: thick double var(--quaternay-color);
+  opacity: 0.6;
   position: fixed;
   top: 1rem;
   right: 0.1rem;
