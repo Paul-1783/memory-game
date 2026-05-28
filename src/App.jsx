@@ -7,6 +7,7 @@ import { Result } from './components/result.jsx';
 import { Card } from './components/card.jsx';
 import { Defeat } from './components/defeatDialog.jsx';
 import { Victory } from './components/victoryDialog.jsx';
+import { CounterPanel } from './components/counterPanel.jsx';
 
 import { originalPictures } from "./assets/dataAssembled.js"
 import { rearangePictures } from "./utils/rearange.js"
@@ -57,6 +58,8 @@ function App() {
 
   return (
     <>
+      <h1>MEMORY</h1>
+      < CounterPanel  bestResult={bestResult} countAttempts={countAttempts} />
       <div className='cards-space'>
         {pictureData.map(picture => 
          < Card key={picture.index} index={picture.index} imgSrc={picture.origin} imgName={picture.title} handleGuess={handleGuess} /> )
