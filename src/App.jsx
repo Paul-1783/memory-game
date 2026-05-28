@@ -58,7 +58,7 @@ function App() {
 
   return (
     <>
-      <h1><span>Van Gogh and friends play</span> MEMORY</h1>
+      <h1><span>Van Gogh and imitators play</span> MEMORY</h1>
       < CounterPanel  bestResult={bestResult} countAttempts={countAttempts} />
       <div className='cards-space'>
         {pictureData.map(picture => 
