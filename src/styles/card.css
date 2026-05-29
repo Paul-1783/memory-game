@@ -9,7 +9,12 @@ button{
 }
 
 .card{
-    background-color: rgb(87, 60, 19);
-    width: 15dvw;
+    background-color: var(--primary-color);
+    border: thick double var(--quaternay-color);
+    width: 100%;
     height: 25dvh;
+}
+
+.card-container:hover{
+    box-shadow: 0.2rem 0.2rem 0.5rem   var(--quaternay-color), -0.2rem -0.2rem 3rem  var(--quaternay-color);
 }

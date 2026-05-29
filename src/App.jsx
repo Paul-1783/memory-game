@@ -10,7 +10,7 @@ import { Victory } from './components/victoryDialog.jsx';
 import { CounterPanel } from './components/counterPanel.jsx';
 
 import { originalPictures } from "./assets/dataAssembled.js"
-import { rearangePictures } from "./utils/rearange.js"
+import { rearangePictures } from "./utils/utilFcts.js"
 
 function App() {
   const [bestResult, setBestResult] = useState(0)
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <>
-      <h1>MEMORY</h1>
+      <h1><span className='title-exposition'>Van Gogh and imitators play</span> MEMORY</h1>
       < CounterPanel  bestResult={bestResult} countAttempts={countAttempts} />
       <div className='cards-space'>
         {pictureData.map(picture => 
