@@ -45,6 +45,7 @@ dialog{
   background-color: var(--secondary-color);
   border: thick double var(--quaternay-color);
   position: relative;
+  width: 75%;
 }
 
 dialog p{
